@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jjws8\\source\\repos\\COMP306402_ProjectDemo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\jjws8\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\jjws8\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\jjws8\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DbContext.cs",
+              "DocumentMoniker": "C:\\Users\\jjws8\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Data\\DbContext.cs",
+              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Data\\DbContext.cs",
+              "ToolTip": "C:\\Users\\jjws8\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Data\\DbContext.cs",
+              "RelativeToolTip": "COMP306402_ProjectDemo\\Data\\DbContext.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA5wE4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T22:34:38.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jjws8\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Program.cs",
+              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Program.cs",
+              "ToolTip": "C:\\Users\\jjws8\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Program.cs",
+              "RelativeToolTip": "COMP306402_ProjectDemo\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T22:31:24.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\jjws8\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\appsettings.json",
+              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\appsettings.json",
+              "ToolTip": "C:\\Users\\jjws8\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\appsettings.json",
+              "RelativeToolTip": "COMP306402_ProjectDemo\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-17T21:45:32.085Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
