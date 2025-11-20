@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using COMP306402_ProjectDemo.Models;
 
-namespace EnrollmentManagementAPI.Data
+namespace COMP306402_ProjectDemo.Data
 {
     public class ApplicationDbContext : DbContext
     {
