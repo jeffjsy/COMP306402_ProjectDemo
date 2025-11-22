@@ -1,8 +1,7 @@
 
-using EnrollmentManagementAPI.Data;
+using COMP306402_ProjectDemo.Data;
 using Microsoft.EntityFrameworkCore;
 // using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

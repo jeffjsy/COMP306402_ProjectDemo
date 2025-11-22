@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\COMP306402_ProjectDemo.props" />
-</Project>
