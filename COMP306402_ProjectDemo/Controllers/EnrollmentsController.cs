@@ -1,10 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using COMP306402_ProjectDemo.DTO;
+using COMP306402_ProjectDemo.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using COMP306402_ProjectDemo.Data;
-using COMP306402_ProjectDemo.Models; 
 
 namespace COMP306402_ProjectDemo.Controllers
 {
@@ -12,137 +9,106 @@ namespace COMP306402_ProjectDemo.Controllers
     [Route("api/[controller]")]
     public class EnrollmentsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IEnrollmentRepository _repo;
+        private readonly IMapper _mapper;
 
-        public EnrollmentsController(ApplicationDbContext context)
+        public EnrollmentsController(IEnrollmentRepository repo, IMapper mapper)
         {
-            _context = context;
+            _repo = repo;
+            _mapper = mapper;
         }
 
         // GET: api/Enrollments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Enrollment>>> GetEnrollments()
+        public async Task<ActionResult<IEnumerable<EnrollmentReadDTO>>> GetEnrollments()
         {
-            var enrollments = await _context.Enrollments
-                .Include(e => e.Student)
-                .Include(e => e.AcedemicProgram)
-                .ToListAsync();
-
-            return Ok(enrollments);
+            var enrollments = await _repo.GetAllAsync();
+            return Ok(_mapper.Map<List<EnrollmentReadDTO>>(enrollments));
         }
 
         // GET: api/Enrollments/5
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Enrollment>> GetEnrollment(int id)
+        public async Task<ActionResult<EnrollmentReadDTO>> GetEnrollment(int id)
         {
-            var enrollment = await _context.Enrollments
-                .Include(e => e.Student)
-                .Include(e => e.AcedemicProgram)
-                .FirstOrDefaultAsync(e => e.EnrollmentId == id);
-
+            var enrollment = await _repo.GetByIdAsync(id);
             if (enrollment == null)
-            {
                 return NotFound();
-            }
 
-            return Ok(enrollment);
+            return Ok(_mapper.Map<EnrollmentReadDTO>(enrollment));
         }
 
         // GET: api/Enrollments/byStudent/3
         [HttpGet("byStudent/{studentId:int}")]
-        public async Task<ActionResult<IEnumerable<Enrollment>>> GetEnrollmentsByStudent(int studentId)
+        public async Task<ActionResult<IEnumerable<EnrollmentReadDTO>>> GetByStudent(int studentId)
         {
-            var enrollments = await _context.Enrollments
-                .Include(e => e.Student)
-                .Include(e => e.AcedemicProgram)
-                .Where(e => e.StudentId == studentId)
-                .ToListAsync();
-
-            return Ok(enrollments);
+            var items = await _repo.GetByStudentIdAsync(studentId);
+            return Ok(_mapper.Map<List<EnrollmentReadDTO>>(items));
         }
 
         // GET: api/Enrollments/byProgram/2
         [HttpGet("byProgram/{programId:int}")]
-        public async Task<ActionResult<IEnumerable<Enrollment>>> GetEnrollmentsByProgram(int programId)
+        public async Task<ActionResult<IEnumerable<EnrollmentReadDTO>>> GetByProgram(int programId)
         {
-            var enrollments = await _context.Enrollments
-                .Include(e => e.Student)
-                .Include(e => e.AcedemicProgram)
-                .Where(e => e.ProgramId == programId)
-                .ToListAsync();
-
-            return Ok(enrollments);
+            var items = await _repo.GetByProgramIdAsync(programId);
+            return Ok(_mapper.Map<List<EnrollmentReadDTO>>(items));
         }
 
         // GET: api/Enrollments/byStatus/Active
         [HttpGet("byStatus/{status}")]
-        public async Task<ActionResult<IEnumerable<Enrollment>>> GetEnrollmentsByStatus(string status)
+        public async Task<ActionResult<IEnumerable<EnrollmentReadDTO>>> GetByStatus(string status)
         {
-            var normalized = status.Trim();
-
-            var enrollments = await _context.Enrollments
-                .Include(e => e.Student)
-                .Include(e => e.AcedemicProgram)
-                .Where(e => e.Status == normalized)
-                .ToListAsync();
-
-            return Ok(enrollments);
+            var items = await _repo.GetByStatusAsync(status.Trim());
+            return Ok(_mapper.Map<List<EnrollmentReadDTO>>(items));
         }
 
         // POST: api/Enrollments
         [HttpPost]
-        public async Task<ActionResult<Enrollment>> CreateEnrollment([FromBody] Enrollment enrollment)
+        public async Task<ActionResult<EnrollmentReadDTO>> CreateEnrollment(EnrollmentCreateDTO dto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var enrollment = _mapper.Map<Models.Enrollment>(dto);
 
-            // Optional: validate Student and Program exist
-            var studentExists = await _context.Students.AnyAsync(s => s.StudentId == enrollment.StudentId);
-            var programExists = await _context.AcedemicPrograms.AnyAsync(p => p.ProgramId == enrollment.ProgramId);
+            await _repo.AddAsync(enrollment);
 
-            if (!studentExists || !programExists)
-            {
-                return BadRequest("Invalid StudentId or ProgramId.");
-            }
-
-            _context.Enrollments.Add(enrollment);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetEnrollment), new { id = enrollment.EnrollmentId }, enrollment);
+            return CreatedAtAction(nameof(GetEnrollment),
+                new { id = enrollment.EnrollmentId },
+                _mapper.Map<EnrollmentReadDTO>(enrollment));
         }
 
         // PUT: api/Enrollments/5
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateEnrollment(int id, [FromBody] Enrollment enrollment)
+        public async Task<IActionResult> UpdateEnrollment(int id, EnrollmentUpdateDTO dto)
         {
-            if (id != enrollment.EnrollmentId)
-            {
-                return BadRequest("Route id and body id must match.");
-            }
+            if (id != dto.EnrollmentId)
+                return BadRequest("ID mismatch.");
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var enrollment = _mapper.Map<Models.Enrollment>(dto);
 
-            _context.Entry(enrollment).State = EntityState.Modified;
+            await _repo.UpdateAsync(enrollment);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                var exists = await _context.Enrollments.AnyAsync(e => e.EnrollmentId == id);
-                if (!exists)
-                {
-                    return NotFound();
-                }
+            return NoContent();
+        }
 
-                throw;
-            }
+        // PATCH: api/Enrollments/5
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> PatchEnrollment(int id, EnrollmentUpdateDTO dto)
+        {
+            var existing = await _repo.GetByIdAsync(id);
+            if (existing == null)
+                return NotFound();
+
+            if (dto.EnrollmentDate.HasValue)
+                existing.EnrollmentDate = dto.EnrollmentDate.Value;
+
+            if (dto.Status != null)
+                existing.Status = dto.Status;
+
+            if (dto.StudentId.HasValue)
+                existing.StudentId = dto.StudentId.Value;
+
+            if (dto.ProgramId.HasValue)
+                existing.ProgramId = dto.ProgramId.Value;
+
+            await _repo.UpdateAsync(existing);
 
             return NoContent();
         }
@@ -151,16 +117,7 @@ namespace COMP306402_ProjectDemo.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteEnrollment(int id)
         {
-            var enrollment = await _context.Enrollments.FindAsync(id);
-
-            if (enrollment == null)
-            {
-                return NotFound();
-            }
-
-            _context.Enrollments.Remove(enrollment);
-            await _context.SaveChangesAsync();
-
+            await _repo.DeleteAsync(id);
             return NoContent();
         }
     }

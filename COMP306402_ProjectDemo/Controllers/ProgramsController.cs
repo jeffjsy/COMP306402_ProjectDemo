@@ -1,10 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using COMP306402_ProjectDemo.DTO;
+using COMP306402_ProjectDemo.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using COMP306402_ProjectDemo.Data;   // adjust if needed
-using COMP306402_ProjectDemo.Models; // adjust if needed
 
 namespace COMP306402_ProjectDemo.Controllers
 {
@@ -12,103 +9,93 @@ namespace COMP306402_ProjectDemo.Controllers
     [Route("api/[controller]")]
     public class ProgramsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IProgramRepository _repo;
+        private readonly IMapper _mapper;
 
-        public ProgramsController(ApplicationDbContext context)
+        public ProgramsController(IProgramRepository repo, IMapper mapper)
         {
-            _context = context;
+            _repo = repo;
+            _mapper = mapper;
         }
 
         // GET: api/Programs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AcademicProgram>>> GetPrograms()
+        public async Task<ActionResult<IEnumerable<ProgramReadDTO>>> GetPrograms()
         {
-            var programs = await _context.AcedemicPrograms
-                .Include(p => p.Enrollments)
-                .ToListAsync();
-
-            return Ok(programs);
+            var programs = await _repo.GetAllAsync();
+            return Ok(_mapper.Map<List<ProgramReadDTO>>(programs));
         }
 
         // GET: api/Programs/5
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<AcademicProgram>> GetProgram(int id)
+        public async Task<ActionResult<ProgramReadDTO>> GetProgram(int id)
         {
-            var program = await _context.AcedemicPrograms
-                .Include(p => p.Enrollments)
-                .FirstOrDefaultAsync(p => p.ProgramId == id);
-
+            var program = await _repo.GetByIdAsync(id);
             if (program == null)
-            {
                 return NotFound();
-            }
 
-            return Ok(program);
+            return Ok(_mapper.Map<ProgramReadDTO>(program));
         }
 
         // POST: api/Programs
         [HttpPost]
-        public async Task<ActionResult<AcademicProgram>> CreateProgram([FromBody] AcademicProgram program)
+        public async Task<ActionResult<ProgramReadDTO>> CreateProgram(ProgramCreateDTO dto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var program = _mapper.Map<Models.AcademicProgram>(dto);
 
-            _context.AcedemicPrograms.Add(program);
-            await _context.SaveChangesAsync();
+            await _repo.AddAsync(program);
 
-            return CreatedAtAction(nameof(GetProgram), new { id = program.ProgramId }, program);
+            return CreatedAtAction(nameof(GetProgram),
+                new { id = program.ProgramId },
+                _mapper.Map<ProgramReadDTO>(program));
         }
 
         // PUT: api/Programs/5
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateProgram(int id, [FromBody] AcademicProgram program)
+        public async Task<IActionResult> UpdateProgram(int id, ProgramUpdateDTO dto)
         {
-            if (id != program.ProgramId)
-            {
-                return BadRequest("Route id and body id must match.");
-            }
+            if (id != dto.ProgramId)
+                return BadRequest("ID mismatch.");
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var program = _mapper.Map<Models.AcademicProgram>(dto);
 
-            _context.Entry(program).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                var exists = await _context.AcedemicPrograms.AnyAsync(p => p.ProgramId == id);
-                if (!exists)
-                {
-                    return NotFound();
-                }
-
-                throw;
-            }
+            await _repo.UpdateAsync(program);
 
             return NoContent();
         }
+
+
+        // PATCH: api/Programs/5
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> PatchProgram(int id, ProgramUpdateDTO dto)
+        {
+            var existing = await _repo.GetByIdAsync(id);
+            if (existing == null)
+                return NotFound();
+
+            if (dto.Name != null)
+                existing.Name = dto.Name;
+
+            if (dto.Description != null)
+                existing.Description = dto.Description;
+
+            if (dto.DurationMonths.HasValue)
+                existing.DurationMonths = dto.DurationMonths.Value;
+
+            if (dto.TuitionFee.HasValue)
+                existing.TuitionFee = dto.TuitionFee.Value;
+
+            await _repo.UpdateAsync(existing);
+
+            return NoContent();
+        }
+
 
         // DELETE: api/Programs/5
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteProgram(int id)
         {
-            var program = await _context.AcedemicPrograms.FindAsync(id);
-
-            if (program == null)
-            {
-                return NotFound();
-            }
-
-            _context.AcedemicPrograms.Remove(program);
-            await _context.SaveChangesAsync();
-
+            await _repo.DeleteAsync(id);
             return NoContent();
         }
     }
