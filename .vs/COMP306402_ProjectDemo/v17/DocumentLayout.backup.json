@@ -7,12 +7,24 @@
       "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\controllers\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\sachm\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\controllers\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\controllers\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\sachm\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\sachm\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\controllers\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\controllers\\programscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\sachm\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\dto\\enrollmentupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\dto\\enrollmentupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\sachm\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\dto\\programupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\dto\\programupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\sachm\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\dto\\studentupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|solutionrelative:comp306402_projectdemo\\dto\\studentupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F9E3743-EB1E-4806-B7B8-0BBBF73440F7}|COMP306402_ProjectDemo\\COMP306402_ProjectDemo.csproj|c:\\users\\sachm\\source\\repos\\comp306402_projectdemo\\comp306402_projectdemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,19 +42,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EnrollmentsController.cs",
-              "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\EnrollmentsController.cs",
-              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Controllers\\EnrollmentsController.cs",
-              "ToolTip": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\EnrollmentsController.cs",
-              "RelativeToolTip": "COMP306402_ProjectDemo\\Controllers\\EnrollmentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "EnrollmentUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\DTO\\EnrollmentUpdateDTO.cs",
+              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\DTO\\EnrollmentUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\DTO\\EnrollmentUpdateDTO.cs",
+              "RelativeToolTip": "COMP306402_ProjectDemo\\DTO\\EnrollmentUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T08:52:11.121Z",
+              "WhenOpened": "2025-11-23T09:15:11.888Z",
               "EditorCaption": ""
             },
             {
@@ -52,32 +64,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ProgramsController.cs",
-              "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\ProgramsController.cs",
-              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Controllers\\ProgramsController.cs",
-              "ToolTip": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\ProgramsController.cs",
-              "RelativeToolTip": "COMP306402_ProjectDemo\\Controllers\\ProgramsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T09:07:08.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "StudentsController.cs",
               "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\StudentsController.cs",
               "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Controllers\\StudentsController.cs",
               "ToolTip": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\StudentsController.cs",
               "RelativeToolTip": "COMP306402_ProjectDemo\\Controllers\\StudentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAIwEEAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-23T09:03:45.284Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProgramsController.cs",
+              "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\ProgramsController.cs",
+              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Controllers\\ProgramsController.cs",
+              "ToolTip": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\ProgramsController.cs",
+              "RelativeToolTip": "COMP306402_ProjectDemo\\Controllers\\ProgramsController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAkwEMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T09:07:08.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnrollmentsController.cs",
+              "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\EnrollmentsController.cs",
+              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Controllers\\EnrollmentsController.cs",
+              "ToolTip": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Controllers\\EnrollmentsController.cs",
+              "RelativeToolTip": "COMP306402_ProjectDemo\\Controllers\\EnrollmentsController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAswFoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T08:52:11.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "ProgramUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\DTO\\ProgramUpdateDTO.cs",
+              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\DTO\\ProgramUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\DTO\\ProgramUpdateDTO.cs",
+              "RelativeToolTip": "COMP306402_ProjectDemo\\DTO\\ProgramUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T09:14:55.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StudentUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\DTO\\StudentUpdateDTO.cs",
+              "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\DTO\\StudentUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\DTO\\StudentUpdateDTO.cs",
+              "RelativeToolTip": "COMP306402_ProjectDemo\\DTO\\StudentUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T09:14:09.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Mappings\\MappingProfile.cs",
               "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Mappings\\MappingProfile.cs",
@@ -90,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\sachm\\source\\repos\\COMP306402_ProjectDemo\\COMP306402_ProjectDemo\\Program.cs",
               "RelativeDocumentMoniker": "COMP306402_ProjectDemo\\Program.cs",
