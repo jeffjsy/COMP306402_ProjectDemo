@@ -1,4 +1,4 @@
-﻿namespace COMP306402_ProjectDemo.DTOs.Enrollments
+﻿namespace COMP306402_ProjectDemo.DTO
 {
     public class EnrollmentReadDTO
     {

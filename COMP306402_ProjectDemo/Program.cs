@@ -1,12 +1,15 @@
 
 using COMP306402_ProjectDemo.Data;
-using Microsoft.EntityFrameworkCore;
+using COMP306402_ProjectDemo.Mappings;
 using COMP306402_ProjectDemo.Repositories;
-// using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Register  ApplicationDbContext with the dependency injection container
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -17,7 +20,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

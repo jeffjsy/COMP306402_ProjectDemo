@@ -1,10 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using COMP306402_ProjectDemo.DTO;
+using COMP306402_ProjectDemo.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using COMP306402_ProjectDemo.Data;   // adjust if your DbContext namespace is different
-using COMP306402_ProjectDemo.Models; // adjust if entities live elsewhere
 
 namespace COMP306402_ProjectDemo.Controllers
 {
@@ -12,106 +9,90 @@ namespace COMP306402_ProjectDemo.Controllers
     [Route("api/[controller]")]
     public class StudentsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IStudentRepository _repo;
+        private readonly IMapper _mapper;
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(IStudentRepository repo, IMapper mapper)
         {
-            _context = context;
+            _repo = repo;
+            _mapper = mapper;
         }
 
         // GET: api/Students
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
+        public async Task<ActionResult<IEnumerable<StudentReadDTO>>> GetStudents()
         {
-            var students = await _context.Students
-                .Include(s => s.Enrollments)
-                .ToListAsync();
-
-            return Ok(students);
+            var students = await _repo.GetAllAsync();
+            return Ok(_mapper.Map<List<StudentReadDTO>>(students));
         }
 
         // GET: api/Students/5
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Student>> GetStudent(int id)
+        public async Task<ActionResult<StudentReadDTO>> GetStudent(int id)
         {
-            var student = await _context.Students
-                .Include(s => s.Enrollments)
-                .FirstOrDefaultAsync(s => s.StudentId == id);
-
+            var student = await _repo.GetByIdAsync(id);
             if (student == null)
-            {
                 return NotFound();
-            }
 
-            return Ok(student);
+            return Ok(_mapper.Map<StudentReadDTO>(student));
         }
 
         // POST: api/Students
         [HttpPost]
-        public async Task<ActionResult<Student>> CreateStudent([FromBody] Student student)
+        public async Task<ActionResult<StudentReadDTO>> CreateStudent(StudentCreateDTO dto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var student = _mapper.Map<Models.Student>(dto);
 
-            _context.Students.Add(student);
-            await _context.SaveChangesAsync();
+            await _repo.AddAsync(student);
 
-            // Returns 201 with Location header: api/Students/{id}
-            return CreatedAtAction(nameof(GetStudent), new { id = student.StudentId }, student);
+            var studentDTO = _mapper.Map<StudentReadDTO>(student);
+            return CreatedAtAction(nameof(GetStudent), new { id = student.StudentId }, studentDTO);
         }
 
         // PUT: api/Students/5
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateStudent(int id, [FromBody] Student student)
+        public async Task<IActionResult> UpdateStudent(int id, StudentUpdateDTO dto)
         {
-            if (id != student.StudentId)
-            {
-                return BadRequest("Route id and body id must match.");
-            }
+            if (id != dto.StudentId)
+                return BadRequest("ID in route does not match ID in body.");
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var student = _mapper.Map<Models.Student>(dto);
 
-            // Attach and mark as modified
-            _context.Entry(student).State = EntityState.Modified;
+            await _repo.UpdateAsync(student);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                var exists = await _context.Students.AnyAsync(s => s.StudentId == id);
-                if (!exists)
-                {
-                    return NotFound();
-                }
-
-                throw;
-            }
-
-            // 204 No Content is standard for successful PUT with no body
             return NoContent();
         }
+
+        // PATCH: api/Students/5
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> PatchStudent(int id, StudentUpdateDTO dto)
+        {
+            var existing = await _repo.GetByIdAsync(id);
+            if (existing == null)
+                return NotFound();
+
+            // Apply partial updates
+            if (dto.FirstName != null)
+                existing.FirstName = dto.FirstName;
+
+            if (dto.LastName != null)
+                existing.LastName = dto.LastName;
+
+            if (dto.EnrollmentDate.HasValue)
+                existing.EnrollmentDate = dto.EnrollmentDate.Value;
+
+            // Save changes
+            await _repo.UpdateAsync(existing);
+
+            return NoContent();
+        }
+
 
         // DELETE: api/Students/5
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteStudent(int id)
         {
-            var student = await _context.Students.FindAsync(id);
-
-            if (student == null)
-            {
-                return NotFound();
-            }
-
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
-
+            await _repo.DeleteAsync(id);
             return NoContent();
         }
     }
