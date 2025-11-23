@@ -1,6 +1,7 @@
 
 using COMP306402_ProjectDemo.Data;
 using Microsoft.EntityFrameworkCore;
+using COMP306402_ProjectDemo.Repositories;
 // using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,12 +15,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 
-
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IProgramRepository, ProgramRepository>();
+builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
 
 var app = builder.Build();
 
