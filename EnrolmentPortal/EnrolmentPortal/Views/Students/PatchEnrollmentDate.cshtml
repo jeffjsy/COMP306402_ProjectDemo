@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Patch Enrollment Date";
+    var studentId = (int)ViewBag.StudentId;
+    DateTime? currentDate = ViewBag.CurrentEnrollmentDate as DateTime?;
+}
+
+
+<h1>Patch Enrollment Date</h1>
+
+@if (currentDate.HasValue)
+{
+    <p>Current enrollment date: @currentDate.Value.ToShortDateString()</p>
+}
+else
+{
+    <p>Current enrollment date: <em>not set</em></p>
+}
+
+<form asp-action="PatchEnrollmentDate" asp-route-id="@studentId" method="post">
+    <div class="mb-3">
+        <label for="newDate" class="form-label">New Enrollment Date</label>
+        <input id="newDate" name="newDate" type="date" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Apply Patch</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+

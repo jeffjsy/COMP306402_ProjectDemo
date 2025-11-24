@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Enrollment Portal";
+}
+
+<h1 class="mb-4">Select a tool</h1>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Manage Enrolment</h3>
+                <p class="card-text">
+                    View, create, update, patch, and delete enrolment records.
+                </p>
+                <a asp-controller="Enrolments" asp-action="Index" class="btn btn-primary mt-auto">
+                    Open Enrolment Tool
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Manage Students</h3>
+                <p class="card-text">
+                    Manage student records and their enrollment details.
+                </p>
+                <a asp-controller="Students" asp-action="Index" class="btn btn-primary mt-auto">
+                    Open Students Tool
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Manage Programs</h3>
+                <p class="card-text">
+                    Create and maintain academic programs and their properties.
+                </p>
+                <a asp-controller="Programs" asp-action="Index" class="btn btn-primary mt-auto">
+                    Open Programs Tool
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

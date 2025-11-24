@@ -1,0 +1,40 @@
+@model EnrollmentPortal.Services.EnrollmentUpdateDTO
+
+@{
+    ViewData["Title"] = "Edit Enrolment";
+}
+
+<h1>Edit Enrolment</h1>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input type="hidden" asp-for="EnrollmentId" />
+
+    <div class="mb-3">
+        <label asp-for="EnrollmentDate" class="form-label"></label>
+        <input asp-for="EnrollmentDate" type="date" class="form-control" />
+        <span asp-validation-for="EnrollmentDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StudentId" class="form-label"></label>
+        <input asp-for="StudentId" class="form-control" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ProgramId" class="form-label"></label>
+        <input asp-for="ProgramId" class="form-control" />
+        <span asp-validation-for="ProgramId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
