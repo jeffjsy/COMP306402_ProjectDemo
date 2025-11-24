@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Patch Description";
+    var programId = (int)ViewBag.ProgramId;
+    var currentDescription = (string)ViewBag.CurrentDescription;
+}
+
+<h1>Patch Program Description</h1>
+
+<p><strong>Current description:</strong></p>
+<p>@currentDescription</p>
+
+<form asp-action="PatchDescription" asp-route-id="@programId" method="post">
+    <div class="mb-3">
+        <label for="newDescription" class="form-label">New Description</label>
+        <textarea id="newDescription" name="newDescription" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Apply Patch</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

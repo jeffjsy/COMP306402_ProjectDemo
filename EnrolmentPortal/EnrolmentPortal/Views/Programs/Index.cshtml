@@ -1,0 +1,44 @@
+@model List<EnrollmentPortal.Services.ProgramReadDTO>
+
+@{
+    ViewData["Title"] = "Programs";
+}
+
+<h1>Programs</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Program</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Duration (months)</th>
+            <th>Tuition Fee</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.ProgramId</td>
+            <td>@p.Name</td>
+            <td>@p.Description</td>
+            <td>@p.DurationMonths</td>
+            <td>@p.TuitionFee</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@p.ProgramId">Details</a> |
+                <a asp-action="Edit" asp-route-id="@p.ProgramId">Edit</a> |
+                <a asp-action="PatchDescription" asp-route-id="@p.ProgramId">Patch Description</a> |
+                <form asp-action="Delete" asp-route-id="@p.ProgramId" method="post" style="display:inline">
+                    <button type="submit" class="btn btn-link p-0">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

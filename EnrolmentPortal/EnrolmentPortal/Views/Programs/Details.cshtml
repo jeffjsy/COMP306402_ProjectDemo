@@ -1,0 +1,31 @@
+@model EnrollmentPortal.Services.ProgramReadDTO
+
+@{
+    ViewData["Title"] = "Program Details";
+}
+
+<h1>Program Details</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Id</dt>
+        <dd class="col-sm-10">@Model.ProgramId</dd>
+
+        <dt class="col-sm-2">Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Duration (months)</dt>
+        <dd class="col-sm-10">@Model.DurationMonths</dd>
+
+        <dt class="col-sm-2">Tuition Fee</dt>
+        <dd class="col-sm-10">@Model.TuitionFee</dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.ProgramId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>
