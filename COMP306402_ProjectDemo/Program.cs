@@ -50,46 +50,6 @@ app.Use(async (context, next) =>
         return;
     }
 
-    var config = context.RequestServices.GetRequiredService<IConfiguration>();
-    var expectedKey = config["ApiSettings:ApiKey"];
-
-    // Check x-api-key header
-    if (!context.Request.Headers.TryGetValue("x-api-key", out var receivedKey) ||
-        string.IsNullOrEmpty(expectedKey) ||
-        !string.Equals(receivedKey, expectedKey, StringComparison.Ordinal))
-    {
-        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-        await context.Response.WriteAsync("API Key missing or invalid.");
-        return;
-    }
-
-    await next();
-});
-
-// API Key middleware
-app.Use(async (context, next) =>
-{
-    // Allow Swagger without API key
-    var path = context.Request.Path.Value ?? string.Empty;
-    if (path.StartsWith("/swagger"))
-    {
-        await next();
-        return;
-    }
-
-    var config = context.RequestServices.GetRequiredService<IConfiguration>();
-    var expectedKey = config["ApiSettings:ApiKey"];
-
-    // Check x-api-key header
-    if (!context.Request.Headers.TryGetValue("x-api-key", out var receivedKey) ||
-        string.IsNullOrEmpty(expectedKey) ||
-        !string.Equals(receivedKey, expectedKey, StringComparison.Ordinal))
-    {
-        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-        await context.Response.WriteAsync("API Key missing or invalid.");
-        return;
-    }
-
     await next();
 });
 
